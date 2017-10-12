@@ -6,7 +6,6 @@ export const newTask = (taskObj) => {
     payload: {
       ...taskObj,
       status: 'open',
-      duration: 25.00,
     },
   };
   store.dispatch(action);
