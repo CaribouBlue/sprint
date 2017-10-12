@@ -1,0 +1,57 @@
+@import 'reset';
+
+body {
+  background: #ECEEEE;
+  padding: 20px;
+}
+
+.center-console {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.task-manager {
+  width: 45%;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.task-queue {
+  width: 45%;
+  border: 1px solid black;
+  padding: 15px;
+}
+ 
+.task-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  margin: 5px;
+  min-height: 75px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 10px;
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    p {
+      color: darkgrey;
+    }
+  }
+
+  button {
+    margin: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
