@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   deleteTask,
-  closeTask,
-  openTask,
+  changeStatus,
+  moveTask,
 } from '../actions/taskActions';
 
 const Task = props => (
@@ -11,7 +11,7 @@ const Task = props => (
     style={{color: props.closed ? 'grey' : 'black'}}
   >
     <button
-      onClick={() => props.closed ? openTask(props.position) : closeTask(props.position)}
+      onClick={() => changeStatus(props.position, props.closed ? 'open' : 'closed', 'manager')}
     >
       {props.closed ? '✓' : 'O'}
     </button>
@@ -19,11 +19,20 @@ const Task = props => (
       <h1>{props.name}</h1>
       <p>{props.tags}</p>
     </div>
-    <button
-      onClick={() => deleteTask(props.position)}
-    >
-      X
-    </button>
+    {
+      props.closed ?
+        <button
+          onClick={() => deleteTask(props.position)}
+        >
+          X
+        </button>
+        :
+        <button
+          onClick={() => moveTask(props.position, 'manager')}
+        >
+          ⇨
+        </button>
+    }
   </div>
 );
 

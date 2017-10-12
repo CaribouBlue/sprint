@@ -4,6 +4,7 @@ import TaskBar from './TaskBar';
 import TaskManager from './TaskManager';
 import Task from './Task';
 import TaskQueue from './TaskQueue';
+import QTask from './QTask';
 
 export {
   App,
@@ -12,4 +13,5 @@ export {
   TaskManager,
   Task,
   TaskQueue,
+  QTask,
 }

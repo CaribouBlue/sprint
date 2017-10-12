@@ -19,18 +19,26 @@ export const deleteTask = (index) => {
   store.dispatch(action);
 };
 
-export const closeTask = (index) => {
+export const changeStatus = (index, status, location) => {
   const action = {
-    type: 'CLOSE_TASK',
-    payload: index,
+    type: 'CHANGE_STATUS',
+    payload: {
+      index,
+      status,
+      location,
+    },
   };
   store.dispatch(action);
 }
 
-export const openTask = (index) => {
+export const moveTask = (index, location) => {
   const action = {
-    type: 'OPEN_TASK',
-    payload: index,
+    type: 'MOVE_TASK',
+    payload: {
+      index,
+      from: location,
+      to: location === 'queue' ? 'manager' : 'queue',
+    },
   };
   store.dispatch(action);
 }

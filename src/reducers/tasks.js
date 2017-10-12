@@ -1,5 +1,11 @@
 const defaultState = {
-  manager: [],
+  manager: [
+    {
+      tags: ['#tag1', '#tag2'],
+      taskName: 'Edit resume',
+      status: 'open',
+    },
+  ],
   queue: [],
 };
 
@@ -13,15 +19,21 @@ const tasksReducer = (state = defaultState, action) => {
       manager.splice(action.payload, 1);
       return {...state, manager};
     }
-    case 'CLOSE_TASK': {
-      const manager = [...state.manager];
-      manager[action.payload].status = 'closed';
-      return {...state, manager};
+    case 'CHANGE_STATUS': {
+      const pl = action.payload;
+      const newState = {};
+      newState.manager = [...state.manager];
+      newState.queue = [...state.queue];
+      newState[pl.location][pl.index] = { ...newState[pl.location][pl.index], status: pl.status};
+      return newState;
     }
-    case 'OPEN_TASK': {
-      const manager = [...state.manager];
-      manager[action.payload].status = 'open';
-      return {...state, manager};
+    case 'MOVE_TASK': {
+      const newState = {};
+      newState.manager = [...state.manager];
+      newState.queue = [...state.queue];
+      const task = newState[action.payload.from].splice(action.payload.index, 1)[0];
+      newState[action.payload.to].push(task);
+      return newState;
     }
     default:
       return state;
