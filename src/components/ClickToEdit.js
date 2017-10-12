@@ -15,7 +15,7 @@ class ClickToEdit extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    if (this.props.editable)
+    if (!this.props.blockEdits)
       this.setState({ editing: true });
   }
 
@@ -23,8 +23,8 @@ class ClickToEdit extends React.Component {
     e.preventDefault();
     const orig = this.state.text;
     let text = e.target.value;
-    if (this.props.preInputProcesser)
-      text = this.props.preInputProcesser(text)
+    if (this.props.preInputProcessor)
+      text = this.props.preInputProcessor(orig, text)
     this.setState({ text });
     if (this.props.handleChange)
       this.props.handleChange(orig, text);
@@ -33,8 +33,8 @@ class ClickToEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let text = this.state.text;
-    if (this.props.preSubmitProcesser)
-      text = this.props.preSubmitProcesser(text);
+    if (this.props.preSubmitProcessor)
+      text = this.props.preSubmitProcessor(text);
     this.setState({ text, editing: false });
     if (this.props.handleSubmit)
       this.props.handleSubmit(text);
@@ -52,6 +52,7 @@ class ClickToEdit extends React.Component {
             onChange={this.handleInput}
             value={this.state.text}
             type="text"
+            autoFocus
           />
         </form>
       );

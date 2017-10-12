@@ -4,6 +4,7 @@ const defaultState = {
       tags: ['#tag1', '#tag2'],
       taskName: 'Edit resume',
       status: 'open',
+      duration: 25.00,
     },
   ],
   queue: [],

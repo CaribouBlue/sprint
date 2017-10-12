@@ -1,17 +1,17 @@
 import React from 'react';
 import _ from 'lodash';
+import { numberToTime } from '../lib/time-helpers';
 import { QTask } from './_index';
 
 const renderTasks = (tasks) => {
   return tasks.map((task, i) => {
-    var tags = task.tags ? task.tags.join(' ') : '';
-    var name = task.taskName;
+    let duration = numberToTime(task.duration)
     return (
       <QTask
         key={_.uniqueId()}
         position={i}
-        name={name}
-        tags={tags}
+        name={task.taskName}
+        duration={duration}
         closed={task.status === 'closed'}
       />
     );

@@ -2,7 +2,18 @@ import React from 'react';
 import { 
   moveTask,
   changeStatus,
+  editTask,
 } from '../actions/taskActions';
+import { ClickToEdit } from './_index';
+import {
+  parseInputTime,
+  parseSubmitTime,
+} from '../lib/time-helpers';
+
+const handleSubmit = (position, value) => {
+  value = Number(value.replace(':', '.'));
+  editTask(position, 'queue', 'duration', value);
+}
 
 const QTask = props => (
   <div
@@ -18,9 +29,13 @@ const QTask = props => (
       <h1
         className="task-name"
       >{props.name}</h1>
-      <p
-        className="task-tags"
-      >{props.duration}</p>
+      <ClickToEdit
+        textClass="task-tags"
+        text={props.duration}
+        //preInputProcessor={parseInputTime}
+        preSubmitProcessor={parseSubmitTime}
+        handleSubmit={(value) => handleSubmit(props.position, value)}
+      />
     </div>
     <button
       onClick={() => {

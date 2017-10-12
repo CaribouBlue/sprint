@@ -86,7 +86,8 @@ body {
   align-items: center;
   border: 1px solid black;
   margin: 5px;
-  min-height: 75px; }
+  min-height: 75px;
+  background-color: white; }
   .task-box div {
     display: flex;
     flex-direction: column;

@@ -22,7 +22,7 @@ const Task = props => (
         text={props.name}
         textClass="task-name"
         handleSubmit={(value) => editTask(props.position, 'manager', 'taskName', value)}
-        editable={!props.closed}
+        blockEdits={props.closed}
       />
       <p
         className="task-tags"
