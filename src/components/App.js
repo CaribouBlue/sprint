@@ -4,6 +4,7 @@ import {
   TaskBar,
   TaskManager,
   TaskQueue,
+  Timer,
 } from './_index';
 
 class App extends React.Component {
@@ -17,12 +18,16 @@ class App extends React.Component {
           <TaskManager
             tasks={this.props.tasks.manager}
           />
-          <TaskQueue
-            tasks={this.props.tasks.queue}
-          />
+          <div
+            className="right"
+          >
+            <Timer />
+            <TaskQueue
+              tasks={this.props.tasks.queue}
+            />
+          </div>
         </div>
         {
-        // <Timer />
         }
       </div>
     );

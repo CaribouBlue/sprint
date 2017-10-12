@@ -9,6 +9,11 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+
+  .right {
+    height: 100%;
+    width: 45%;
+  }
 }
 
 .task-manager {
@@ -17,8 +22,26 @@ body {
   padding: 15px;
 }
 
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+    .clock {
+      font-size: 20px;
+    }
+
+    button {
+      border: 1px solid black;
+      padding: 2px;
+      margin: 10px;
+      background-color: white;
+    }
+}
+
 .task-queue {
-  width: 45%;
   border: 1px solid black;
   padding: 15px;
 }
