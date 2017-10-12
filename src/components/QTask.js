@@ -6,7 +6,7 @@ import {
 } from '../actions/taskActions';
 import { ClickToEdit } from './_index';
 import {
-  parseInputTime,
+  //parseInputTime,
   parseSubmitTime,
 } from '../lib/time-helpers';
 

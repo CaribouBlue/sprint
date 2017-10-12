@@ -1,5 +1,5 @@
 export const numberToTime = (num) => {
-  const min = Math.floor(num);
+  const min = (Math.floor(num) + '').padStart(2, 0);
   const sec = num.toFixed(2).slice(-2);
   return min + ':' + sec;
 };
