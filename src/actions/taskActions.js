@@ -11,10 +11,13 @@ export const newTask = (taskObj) => {
   store.dispatch(action);
 };
 
-export const deleteTask = (index) => {
+export const deleteTask = (index, location = 'manager') => {
   const action = {
     type: 'DELETE_TASK',
-    payload: index,
+    payload: {
+      index,
+      location,
+    },
   };
   store.dispatch(action);
 };
@@ -51,6 +54,17 @@ export const editTask = (index, location, propName, value) => {
       location,
       propName,
       value,
+    },
+  };
+  store.dispatch(action);
+}
+
+export const addBreak = (duration) => {
+  const action = {
+    type: 'ADD_BREAK',
+    payload: {
+      duration,
+      taskName: '~break~',
     },
   };
   store.dispatch(action);

@@ -16,9 +16,12 @@ const tasksReducer = (state = defaultState, action) => {
       return {...state, manager: [...state.manager, action.payload]};
     }
     case 'DELETE_TASK': {
-      const manager = [...state.manager];
-      manager.splice(action.payload, 1);
-      return {...state, manager};
+      const pl = action.payload;
+      const newState = {};
+      newState.manager = [...state.manager];
+      newState.queue = [...state.queue];
+      newState[pl.location].splice(pl.index, 1);
+      return newState;
     }
     case 'CHANGE_STATUS': {
       const pl = action.payload;
@@ -43,6 +46,12 @@ const tasksReducer = (state = defaultState, action) => {
       newState.queue = [...state.queue];
       newState[pl.location][pl.index] = { ...newState[pl.location][pl.index], [pl.propName]: pl.value};
       return newState;
+    }
+    case 'ADD_BREAK': {
+      const pl = action.payload;
+      const queue = [...state.queue];
+      queue.unshift({ taskName: pl.taskName, duration: pl.duration, status: 'open' });
+      return {...state, queue};
     }
     default:
       return state;

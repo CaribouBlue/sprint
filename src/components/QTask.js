@@ -39,11 +39,10 @@ const QTask = props => (
     </div>
     <button
       onClick={() => {
-        changeStatus(props.position, 'closed', 'queue');
-        moveTask(props.position, 'queue');
+        editTask(props.position, 'queue', 'duration', 0);
       }}
     >
-      {'O'}
+      ↻
     </button>
   </div>
 );

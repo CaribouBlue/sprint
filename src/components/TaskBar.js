@@ -32,10 +32,11 @@ export default  class extends Component {
     // get array of tags
     parsedInput.tags = input.match(/#\S*/g);
     {
-      // get first instance of duration
-      let duration = input.match(/~\S*/g)[0];
+      // get duration or set manually if none is given
+      let duration = input.match(/~\S*/g);
+      if (!duration) duration = ['25'];
       // parse to time string
-      duration = parseSubmitTime(duration);
+      duration = parseSubmitTime(duration[0]);
       // convert to number
       parsedInput.duration = Number(duration.replace(':', '.'));
     }

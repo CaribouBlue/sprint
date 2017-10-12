@@ -21,7 +21,9 @@ class App extends React.Component {
           <div
             className="right"
           >
-            <Timer />
+            <Timer 
+              tasks={this.props.tasks.queue}
+            />
             <TaskQueue
               tasks={this.props.tasks.queue}
             />
