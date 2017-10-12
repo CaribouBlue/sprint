@@ -4,6 +4,7 @@ import {
   deleteTask,
   changeStatus,
   moveTask,
+  editTask
 } from '../actions/taskActions';
 
 const Task = props => (
@@ -20,6 +21,7 @@ const Task = props => (
       <ClickToEdit
         text={props.name}
         textClass="task-name"
+        handleSubmit={(value) => editTask(props.position, 'manager', 'taskName', value)}
       />
       <p
         className="task-tags"

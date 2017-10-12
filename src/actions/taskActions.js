@@ -42,3 +42,16 @@ export const moveTask = (index, location) => {
   };
   store.dispatch(action);
 }
+
+export const editTask = (index, location, propName, value) => {
+  const action = {
+    type: 'EDIT_TASK',
+    payload: {
+      index,
+      location,
+      propName,
+      value,
+    },
+  };
+  store.dispatch(action);
+}

@@ -35,6 +35,14 @@ const tasksReducer = (state = defaultState, action) => {
       newState[action.payload.to].push(task);
       return newState;
     }
+    case 'EDIT_TASK': {
+      const pl = action.payload;
+      const newState = {};
+      newState.manager = [...state.manager];
+      newState.queue = [...state.queue];
+      newState[pl.location][pl.index] = { ...newState[pl.location][pl.index], [pl.propName]: pl.value};
+      return newState;
+    }
     default:
       return state;
   }
