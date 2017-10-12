@@ -15,7 +15,8 @@ class ClickToEdit extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.setState({ editing: true });
+    if (this.props.editable)
+      this.setState({ editing: true });
   }
 
   handleInput(e) {
@@ -40,25 +41,25 @@ class ClickToEdit extends React.Component {
   }
 
   getRender() {
-    if (!this.state.editing)
+    if (this.state.editing)
       return (
-        <p
-          className={this.props.textClass}
-          onClick={this.handleClick}
-        >{this.state.text}</p>
+        <form
+          className={this.props.formClass}
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            className={this.props.inputClass}
+            onChange={this.handleInput}
+            value={this.state.text}
+            type="text"
+          />
+        </form>
       );
     return (
-      <form
-        className={this.props.formClass}
-        onSubmit={this.handleSubmit}
-      >
-        <input
-          className={this.props.inputClass}
-          onChange={this.handleInput}
-          value={this.state.text}
-          type="text"
-        />
-      </form>
+      <p
+        className={this.props.textClass}
+        onClick={this.handleClick}
+      >{this.state.text}</p>
     );
   }
 
