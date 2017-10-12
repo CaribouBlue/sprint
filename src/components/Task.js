@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClickToEdit } from './_index';
 import { 
   deleteTask,
   changeStatus,
@@ -16,8 +17,13 @@ const Task = props => (
       {props.closed ? '✓' : 'O'}
     </button>
     <div>
-      <h1>{props.name}</h1>
-      <p>{props.tags}</p>
+      <ClickToEdit
+        text={props.name}
+        textClass="task-name"
+      />
+      <p
+        className="task-tags"
+      >{props.tags}</p>
     </div>
     {
       props.closed ?

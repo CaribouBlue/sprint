@@ -94,10 +94,10 @@ body {
     align-items: center;
     height: 100%;
     margin: 10px; }
-    .task-box div h1 {
+    .task-box div .task-name {
       margin-bottom: 10px;
       font-size: 20px; }
-    .task-box div p {
+    .task-box div .task-tags {
       color: darkgrey; }
   .task-box button {
     margin: 20px;

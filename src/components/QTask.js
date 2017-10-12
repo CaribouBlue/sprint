@@ -15,8 +15,12 @@ const QTask = props => (
       ⇦
     </button>
     <div>
-      <h1>{props.name}</h1>
-      <p>{props.duration}</p>
+      <h1
+        className="task-name"
+      >{props.name}</h1>
+      <p
+        className="task-tags"
+      >{props.duration}</p>
     </div>
     <button
       onClick={() => {

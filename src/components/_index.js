@@ -5,6 +5,7 @@ import TaskManager from './TaskManager';
 import Task from './Task';
 import TaskQueue from './TaskQueue';
 import QTask from './QTask';
+import ClickToEdit from './ClickToEdit';
 
 export {
   App,
@@ -14,4 +15,5 @@ export {
   Task,
   TaskQueue,
   QTask,
+  ClickToEdit,
 }
