@@ -7,7 +7,6 @@ import TaskQueue from './TaskQueue';
 import QTask from './QTask';
 import ClickToEdit from './ClickToEdit';
 import Timer from './Timer';
-import BreakTask from './BreakTask';
 
 export {
   App,
@@ -19,5 +18,4 @@ export {
   QTask,
   ClickToEdit,
   Timer,
-  BreakTask,
 }

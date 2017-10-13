@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { numberToTime } from '../lib/time-helpers';
 import { 
   QTask,
-  BreakTask,
 } from './_index';
 
 const renderTasks = (tasks, running) => {
