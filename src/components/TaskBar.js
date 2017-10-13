@@ -54,14 +54,9 @@ export default  class extends Component {
   }
 
   render() {
-    const boxStyle = {
-      border: '1px solid black',
-      padding: '15px'
-    };
-
     return (
       <div
-        style={boxStyle}
+        className="task-bar"
       >
         <form
           onSubmit={this.inputSubmitHandler}
