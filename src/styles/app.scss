@@ -80,13 +80,19 @@ body {
       margin-top: 0px;
       color: grey;
     }
+  
+    .open {
+      color: black;
+      border-bottom: 1px black solid;
+    }
   }
 
-
-  .open {
-    color: black;
-    border-bottom: 1px black solid;
+  .status-form {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
   }
+
 }
 
  

@@ -120,9 +120,13 @@ body {
       margin-bottom: 15px;
       margin-top: 0px;
       color: grey; }
-  .task-manager .open {
-    color: black;
-    border-bottom: 1px black solid; }
+    .task-manager .tabs-box .open {
+      color: black;
+      border-bottom: 1px black solid; }
+  .task-manager .status-form {
+    display: flex;
+    justify-content: space-between;
+    width: 45%; }
 
 .task-box, .break-box {
   display: flex;

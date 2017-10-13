@@ -11,9 +11,11 @@ export default  class extends Component {
     this.state = {
       tab: 'all',
       allTags: [],
+      status: 'all',
     }
 
     this.selectTab = this.selectTab.bind(this);
+    this.selectStatus = this.selectStatus.bind(this);
   }
 
   getTabClass(tab) {
@@ -23,6 +25,11 @@ export default  class extends Component {
   selectTab(e, tab) {
     e.preventDefault();
     this.setState({ tab });
+  }
+
+  selectStatus(e) {
+    const status = e.target.value;
+    this.setState({ status });
   }
 
   renderTabs() {
@@ -51,6 +58,8 @@ export default  class extends Component {
       const name = task.taskName;
       if (this.state.tab !== 'all' && task.tags.indexOf('#' + this.state.tab) < 0)
         return null;
+      if (this.state.status !== 'all' && task.status !== this.state.status)
+        return null;
       const taskEl = (
         <Task
           key={_.uniqueId()}
@@ -71,15 +80,39 @@ export default  class extends Component {
       <div
         className="task-manager"
       >
-      <div
-        className="tabs-box"
-      >
-        <button
-          className={this.getTabClass('all')}
-          onClick={(e) => this.selectTab(e, 'all')}
-        >all</button>
-        {this.renderTabs()}
-      </div>
+        <div
+          className="tabs-box"
+        >
+          <button
+            className={this.getTabClass('all')}
+            onClick={(e) => this.selectTab(e, 'all')}
+          >all</button>
+          {this.renderTabs()}
+        </div>
+        <form
+          className="status-form"
+          onChange={this.selectStatus}
+        >
+          <input
+            type="radio"
+            name="status"
+            value="all"
+            defaultChecked
+          />
+          <p>all</p>
+          <input
+            type="radio"
+            name="status"
+            value="open"
+          />
+          <p>open</p>
+          <input
+            type="radio"
+            name="status"
+            value="closed"
+          /> 
+          <p>closed</p>
+        </form>
         {this.renderTasks()}
       </div>
     );
