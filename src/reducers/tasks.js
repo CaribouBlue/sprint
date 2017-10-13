@@ -1,10 +1,11 @@
 const defaultState = {
   manager: [
     {
-      tags: ['#tag1', '#tag2'],
+      tags: ['#job-search'],
       taskName: 'Edit resume',
       status: 'open',
       duration: 25.00,
+      createdAt: Date.now(),
     },
   ],
   queue: [],

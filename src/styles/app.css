@@ -63,7 +63,14 @@ button:focus {
 
 body {
   background: #ECEEEE;
-  padding: 20px; }
+  padding: 20px;
+  box-sizing: border-box; }
+
+#root {
+  height: 100%; }
+
+#app-box {
+  height: 100%; }
 
 .task-bar {
   border: 1px solid black;
@@ -77,10 +84,27 @@ body {
 .center-console {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px; }
+  margin-top: 10px;
+  height: 100%; }
   .center-console .right {
     height: 100%;
     width: 45%; }
+    .center-console .right .timer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px; }
+      .center-console .right .timer .clock {
+        font-size: 20px; }
+      .center-console .right .timer button {
+        border: 1px solid black;
+        padding: 2px;
+        margin: 10px;
+        background-color: white; }
+    .center-console .right .task-queue {
+      border: 1px solid black;
+      padding: 15px; }
 
 .task-manager {
   width: 45%;
@@ -99,24 +123,6 @@ body {
   .task-manager .open {
     color: black;
     border-bottom: 1px black solid; }
-
-.timer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px; }
-  .timer .clock {
-    font-size: 20px; }
-  .timer button {
-    border: 1px solid black;
-    padding: 2px;
-    margin: 10px;
-    background-color: white; }
-
-.task-queue {
-  border: 1px solid black;
-  padding: 15px; }
 
 .task-box, .break-box {
   display: flex;

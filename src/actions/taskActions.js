@@ -6,6 +6,7 @@ export const newTask = (taskObj) => {
     payload: {
       ...taskObj,
       status: 'open',
+      createdAt: Date.now(),
     },
   };
   store.dispatch(action);

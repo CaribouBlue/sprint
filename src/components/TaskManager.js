@@ -44,12 +44,14 @@ export default  class extends Component {
   }
 
   renderTasks() {
-    return this.props.tasks.map((task, i) => {
-      var tags = task.tags ? task.tags.join(' ') : '';
-      var name = task.taskName;
+    const open = [];
+    const closed = [];
+    this.props.tasks.forEach((task, i) => {
+      const tags = task.tags ? task.tags.join(' ') : '';
+      const name = task.taskName;
       if (this.state.tab !== 'all' && task.tags.indexOf('#' + this.state.tab) < 0)
         return null;
-      return (
+      const taskEl = (
         <Task
           key={_.uniqueId()}
           position={i}
@@ -59,7 +61,9 @@ export default  class extends Component {
           running={this.props.running}
         />
       );
+      task.status === 'closed' ? closed.push(taskEl) : open.push(taskEl);
     });
+    return [...open, ...closed];
   }
 
   render() {
