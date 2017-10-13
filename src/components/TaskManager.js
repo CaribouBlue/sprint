@@ -67,7 +67,9 @@ export default  class extends Component {
       <div
         className="task-manager"
       >
-      <div>
+      <div
+        className="tabs-box"
+      >
         <button
           className={this.getTabClass('all')}
           onClick={(e) => this.selectTab(e, 'all')}

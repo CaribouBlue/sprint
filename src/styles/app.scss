@@ -33,14 +33,20 @@ body {
   border: 1px solid black;
   padding: 15px;
 
-  .tab {
-    padding: 5px;
-    padding-bottom: 0px;
-    margin: 5px;
-    margin-bottom: 15px;
-    margin-top: 0px;
-    color: grey;
+  .tabs-box {
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    .tab {
+      padding: 5px;
+      padding-bottom: 0px;
+      margin: 5px;
+      margin-bottom: 15px;
+      margin-top: 0px;
+      color: grey;
+    }
   }
+
 
   .open {
     color: black;

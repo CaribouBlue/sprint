@@ -86,13 +86,16 @@ body {
   width: 45%;
   border: 1px solid black;
   padding: 15px; }
-  .task-manager .tab {
-    padding: 5px;
-    padding-bottom: 0px;
-    margin: 5px;
-    margin-bottom: 15px;
-    margin-top: 0px;
-    color: grey; }
+  .task-manager .tabs-box {
+    overflow-x: auto;
+    white-space: nowrap; }
+    .task-manager .tabs-box .tab {
+      padding: 5px;
+      padding-bottom: 0px;
+      margin: 5px;
+      margin-bottom: 15px;
+      margin-top: 0px;
+      color: grey; }
   .task-manager .open {
     color: black;
     border-bottom: 1px black solid; }
