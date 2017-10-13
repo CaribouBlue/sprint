@@ -4,7 +4,8 @@ import {
   deleteTask,
   changeStatus,
   moveTask,
-  editTask
+  editTask,
+  addBreaks,
 } from '../actions/taskActions';
 
 const Task = props => (
@@ -37,7 +38,11 @@ const Task = props => (
         </button>
         :
         <button
-          onClick={() => moveTask(props.position, 'manager')}
+          onClick={() => {
+            moveTask(props.position, 'manager');
+            if (props.running)
+              addBreaks();
+          }}
         >
           ⇨
         </button>

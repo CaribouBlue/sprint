@@ -47,11 +47,9 @@ const tasksReducer = (state = defaultState, action) => {
       newState[pl.location][pl.index] = { ...newState[pl.location][pl.index], [pl.propName]: pl.value};
       return newState;
     }
-    case 'ADD_BREAK': {
+    case 'NEW_QUEUE': {
       const pl = action.payload;
-      const queue = [...state.queue];
-      queue.unshift({ taskName: pl.taskName, duration: pl.duration, status: 'open' });
-      return {...state, queue};
+      return {...state, queue: pl.newQueue};
     }
     default:
       return state;

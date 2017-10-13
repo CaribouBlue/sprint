@@ -1,9 +1,12 @@
 import React from 'react';
 import _ from 'lodash';
 import { numberToTime } from '../lib/time-helpers';
-import { QTask } from './_index';
+import { 
+  QTask,
+  BreakTask,
+} from './_index';
 
-const renderTasks = (tasks) => {
+const renderTasks = (tasks, running) => {
   return tasks.map((task, i) => {
     let duration = numberToTime(task.duration)
     return (
@@ -13,7 +16,9 @@ const renderTasks = (tasks) => {
         name={task.taskName}
         duration={duration}
         closed={task.status === 'closed'}
-      />
+        running={running}
+        break={task.break}
+      />      
     );
   });
 };
@@ -22,7 +27,7 @@ const TaskQueue = props => (
   <div
     className="task-queue"
   >
-    {renderTasks(props.tasks)}
+    {renderTasks(props.tasks, props.running)}
   </div>
 );
 

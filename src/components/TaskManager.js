@@ -16,6 +16,7 @@ export default  class extends Component {
           name={name}
           tags={tags}
           closed={task.status === 'closed'}
+          running={this.props.running}
         />
       );
     });

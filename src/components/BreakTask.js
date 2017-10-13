@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  moveTask,
   editTask,
 } from '../actions/taskActions';
 import { ClickToEdit } from './_index';
@@ -13,19 +12,12 @@ const handleSubmit = (position, value) => {
   editTask(position, 'queue', 'duration', value);
 }
 
-const QTask = props => (
+const BreakTask = props => (
   <div
-    className={props.break ? 'break-box' : 'task-box'}
-    style={{color: props.closed ? 'grey' : 'black'}}
+    className="break-box"
   >
-    {
-      props.break ? <h4></h4> :
-      <button
-        onClick={() => moveTask(props.position, 'queue')}
-      >
-        ⇦
-      </button>
-    }
+    <button>
+    </button>
     <div>
       <h1
         className="task-name"
@@ -48,4 +40,4 @@ const QTask = props => (
   </div>
 );
 
-export default QTask;
+export default BreakTask;

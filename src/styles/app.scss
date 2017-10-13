@@ -45,6 +45,7 @@ body {
   border: 1px solid black;
   padding: 15px;
 }
+
  
 .task-box {
   display: flex;
@@ -69,11 +70,38 @@ body {
     }
 
     .task-tags {
-      color: darkgrey;
+      color: grey;
     }
   }
 
   button {
+    margin: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.break-box {
+  @extend .task-box; 
+  background-color: whitesmoke;
+  min-height: 0px;
+  height: 47px;
+
+  div {
+
+    .task-name {
+      font-size: 18px;
+      margin-bottom: 5px;
+      display: none;
+    }
+
+    .task-tags {
+      color: black;
+    }
+
+  }
+
+  h4 {
     margin: 20px;
     height: 20px;
     width: 20px;

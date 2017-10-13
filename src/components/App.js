@@ -8,6 +8,20 @@ import {
 } from './_index';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      timerRunning: false,
+    }
+
+    this.toggleTimer = this.toggleTimer.bind(this);
+  }
+
+  toggleTimer() {
+    this.setState({ timerRunning: !this.state.timerRunning });
+  }
+
   render() {
     return (
       <div>
@@ -17,15 +31,19 @@ class App extends React.Component {
         >
           <TaskManager
             tasks={this.props.tasks.manager}
+            running={this.state.timerRunning}
           />
           <div
             className="right"
           >
             <Timer 
               tasks={this.props.tasks.queue}
+              running={this.state.timerRunning}
+              toggleTimer={this.toggleTimer}
             />
             <TaskQueue
               tasks={this.props.tasks.queue}
+              running={this.state.timerRunning}
             />
           </div>
         </div>

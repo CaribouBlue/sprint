@@ -96,7 +96,7 @@ body {
   border: 1px solid black;
   padding: 15px; }
 
-.task-box {
+.task-box, .break-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,19 +104,34 @@ body {
   margin: 5px;
   min-height: 75px;
   background-color: white; }
-  .task-box div {
+  .task-box div, .break-box div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     margin: 10px; }
-    .task-box div .task-name {
+    .task-box div .task-name, .break-box div .task-name {
       margin-bottom: 10px;
       font-size: 20px; }
-    .task-box div .task-tags {
-      color: darkgrey; }
-  .task-box button {
+    .task-box div .task-tags, .break-box div .task-tags {
+      color: grey; }
+  .task-box button, .break-box button {
+    margin: 20px;
+    height: 20px;
+    width: 20px; }
+
+.break-box {
+  background-color: whitesmoke;
+  min-height: 0px;
+  height: 47px; }
+  .break-box div .task-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: none; }
+  .break-box div .task-tags {
+    color: black; }
+  .break-box h4 {
     margin: 20px;
     height: 20px;
     width: 20px; }

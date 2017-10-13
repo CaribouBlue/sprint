@@ -6,7 +6,8 @@ import {
   changeStatus,
   editTask,
   deleteTask,
-  addBreak,
+  addBreaks,
+  removeBreaks,
 } from '../actions/taskActions';
 
 class Timer extends React.Component {
@@ -15,7 +16,6 @@ class Timer extends React.Component {
 
     this.state = {
       time: 0,
-      running: false,
       completed: 0,
     };
 
@@ -23,29 +23,19 @@ class Timer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.props.tasks.length && this.state.running)
+    if (!this.props.tasks.length && this.props.running)
       this.pauseTimer();
   }
 
-  createBreak() {
-    const completed = this.state.completed + 1;
-    const length = completed % 4 === 0 ? 30 : 5;
-    this.setState({ completed });
-    if (this.props.tasks.length)
-      addBreak(length);
-  }
-
   checkDuration(duration) {
-    if (Number(duration.toFixed(2)) === 0 || Number(duration.toFixed(2)) - 0.01 === 0) {
-      if (this.props.tasks[0].taskName === '~break~') {
-        console.log('found a break');
+    if (Number(duration.toFixed(2)) <= 0 || Number(duration.toFixed(2)) - 0.01 <= 0) {
+      if (this.props.tasks[0].break) {
         deleteTask(0, 'queue');
         return true;
       }
       editTask(0, 'queue', 'duration', 0);
       changeStatus(0, 'closed', 'queue');
       moveTask(0, 'queue');
-      this.createBreak();
       return true;
     }
   }
@@ -60,7 +50,8 @@ class Timer extends React.Component {
   }
 
   startTimer() {
-    if (this.props.tasks.length && !this.state.running) {
+    if (this.props.tasks.length && !this.props.running) {
+      addBreaks();
       this.timerInterval = setInterval(() => {
         if(!this.props.tasks.length)
           return this.pauseTimer();
@@ -70,18 +61,24 @@ class Timer extends React.Component {
         this.setState({ time });
         this.updateTaskDuration();
       }, 1000);
-      this.setState({ running: true });
+      this.props.toggleTimer();
     }
   }
 
   pauseTimer() {
-    clearInterval(this.timerInterval);
-    this.setState({ running: false });
+    if (this.props.running) {
+      clearInterval(this.timerInterval);
+      this.props.toggleTimer();
+    }
   }
 
   stopTimer() {
-    clearInterval(this.timerInterval);
-    this.setState({ time: 0, running: false, completed: 0 });
+      clearInterval(this.timerInterval);
+      removeBreaks();
+      this.setState({ time: 0, completed: 0 });
+    if (this.props.running) {
+      this.props.toggleTimer();
+    }
   }
 
   render() {
