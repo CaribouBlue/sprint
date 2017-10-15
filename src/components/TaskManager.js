@@ -35,7 +35,10 @@ export default  class extends Component {
   renderTabs() {
     return this.props.tasks.reduce((memo, task) => {
       if (task.tags)
-        return [...memo, ...task.tags]
+        task.tags.forEach(tag => {
+          if (memo.indexOf(tag) < 0)
+            memo.push(tag);
+        });
       return memo;
     }, [])
     .map(tabName => {

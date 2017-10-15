@@ -106,3 +106,14 @@ export const removeBreaks = () => {
     },
   });
 }
+
+export const swapTasks = (index1, index2) => {
+  const action = {
+    type: 'SWAP_TASKS',
+    payload: {
+      index1,
+      index2,
+    },
+  };
+  store.dispatch(action);
+}

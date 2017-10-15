@@ -56,8 +56,8 @@ body {
     }
 
     .task-queue {
-      border: 1px solid black;
-      padding: 15px;
+      //border: 1px solid black;
+      //padding: 15px;
     }
 
   }
@@ -65,7 +65,7 @@ body {
 
 .task-manager {
   width: 45%;
-  border: 1px solid black;
+  //border: 1px solid black;
   padding: 15px;
 
   .tabs-box {
@@ -91,6 +91,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 45%;
+    margin-bottom: 15px;
   }
 
 }

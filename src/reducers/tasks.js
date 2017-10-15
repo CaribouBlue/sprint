@@ -52,6 +52,16 @@ const tasksReducer = (state = defaultState, action) => {
       const pl = action.payload;
       return {...state, queue: pl.newQueue};
     }
+    case 'SWAP_TASKS': {
+      const pl = action.payload;
+      const newState = {};
+      newState.manager = [...state.manager];
+      newState.queue = [...state.queue];
+      const item1 = newState.queue[pl.index1];
+      newState.queue[pl.index1] = newState. queue[pl.index2];
+      newState.queue[pl.index2] = item1;
+      return newState;
+    }
     default:
       return state;
   }

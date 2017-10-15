@@ -102,13 +102,9 @@ body {
         padding: 2px;
         margin: 10px;
         background-color: white; }
-    .center-console .right .task-queue {
-      border: 1px solid black;
-      padding: 15px; }
 
 .task-manager {
   width: 45%;
-  border: 1px solid black;
   padding: 15px; }
   .task-manager .tabs-box {
     overflow-x: auto;
@@ -126,7 +122,8 @@ body {
   .task-manager .status-form {
     display: flex;
     justify-content: space-between;
-    width: 45%; }
+    width: 45%;
+    margin-bottom: 15px; }
 
 .task-box, .break-box {
   display: flex;
