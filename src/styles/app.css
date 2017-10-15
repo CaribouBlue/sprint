@@ -102,6 +102,8 @@ body {
         padding: 2px;
         margin: 10px;
         background-color: white; }
+    .center-console .right .task-queue ::selection {
+      background-color: Transparent; }
 
 .task-manager {
   width: 45%;
