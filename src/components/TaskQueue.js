@@ -25,7 +25,6 @@ class TaskQueue extends React.Component {
   }
 
   setDragging(item = 'none') {
-    console.log('setting drg');
     this.setState({ dragging: item });
   }
 
