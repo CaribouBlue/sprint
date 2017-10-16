@@ -1,8 +1,11 @@
 import React from 'react';
+import { ClickToEdit } from './_index';
 import { 
   deleteTask,
-  closeTask,
-  openTask,
+  changeStatus,
+  moveTask,
+  editTask,
+  addBreaks,
 } from '../actions/taskActions';
 
 const Task = props => (
@@ -11,19 +14,39 @@ const Task = props => (
     style={{color: props.closed ? 'grey' : 'black'}}
   >
     <button
-      onClick={() => props.closed ? openTask(props.position) : closeTask(props.position)}
+      onClick={() => changeStatus(props.position, props.closed ? 'open' : 'closed', 'manager')}
     >
       {props.closed ? '✓' : 'O'}
     </button>
     <div>
-      <h1>{props.name}</h1>
-      <p>{props.tags}</p>
+      <ClickToEdit
+        text={props.name}
+        textClass="task-name"
+        handleSubmit={(value) => editTask(props.position, 'manager', 'taskName', value)}
+        blockEdits={props.closed}
+      />
+      <p
+        className="task-tags"
+      >{props.tags}</p>
     </div>
-    <button
-      onClick={() => deleteTask(props.position)}
-    >
-      X
-    </button>
+    {
+      props.closed ?
+        <button
+          onClick={() => deleteTask(props.position)}
+        >
+          X
+        </button>
+        :
+        <button
+          onClick={() => {
+            moveTask(props.position, 'manager');
+            if (props.running)
+              addBreaks();
+          }}
+        >
+          ⇨
+        </button>
+    }
   </div>
 );
 

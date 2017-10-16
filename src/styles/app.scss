@@ -3,25 +3,125 @@
 body {
   background: #ECEEEE;
   padding: 20px;
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+#app-box {
+  height: 100%;
+}
+
+
+.task-bar {
+  border: 1px solid black;
+  padding: 15px;
+
+  button {
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+  }
 }
 
 .center-console {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  height: 100%;
+
+  .right {
+    height: 100%;
+    width: 45%;
+    
+    .timer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+
+        .clock {
+          font-size: 20px;
+        }
+
+        button {
+          border: 1px solid black;
+          padding: 2px;
+          margin: 10px;
+          background-color: white;
+        }
+    }
+
+    .task-queue {
+      ::selection {
+        background-color:Transparent;
+      }
+    }
+
+  }
 }
 
 .task-manager {
   width: 45%;
-  border: 1px solid black;
   padding: 15px;
+
+  .tabs-box {
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    .tab {
+      padding: 5px;
+      padding-bottom: 0px;
+      margin: 5px;
+      margin-top: 0px;
+      color: grey;
+    }
+  
+    .open {
+      color: black;
+      border-bottom: 1px black solid;
+    }
+  }
+
+  .status-form {
+    display: flex;
+    width: 45%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+    div {
+      display: flex;
+
+      p {
+        margin-left: 5px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  ::-webkit-scrollbar {
+      width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: lightgrey; 
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+  }
 }
 
-.task-queue {
-  width: 45%;
-  border: 1px solid black;
-  padding: 15px;
-}
+
  
 .task-box {
   display: flex;
@@ -30,6 +130,7 @@ body {
   border: 1px solid black;
   margin: 5px;
   min-height: 75px;
+  background-color: white;
 
   div {
     display: flex;
@@ -38,18 +139,52 @@ body {
     align-items: center;
     height: 100%;
     margin: 10px;
+    max-width: 50%;
 
-    h1 {
+    .task-name {
       margin-bottom: 10px;
       font-size: 20px;
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
 
-    p {
-      color: darkgrey;
+    .task-tags {
+      color: grey;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
     }
   }
 
   button {
+    margin: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.break-box {
+  @extend .task-box; 
+  background-color: whitesmoke;
+  min-height: 0px;
+  height: 47px;
+
+  div {
+
+    .task-name {
+      font-size: 18px;
+      margin-bottom: 5px;
+      display: none;
+    }
+
+    .task-tags {
+      color: black;
+    }
+
+  }
+
+  h4 {
     margin: 20px;
     height: 20px;
     width: 20px;

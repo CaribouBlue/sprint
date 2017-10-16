@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from '../lib/react-binder';
+import { parseSubmitTime } from '../lib/time-helpers';
 import { newTask } from '../actions/taskActions';
 
 export default  class extends Component {
@@ -30,9 +31,21 @@ export default  class extends Component {
     var input = this.state.taskInput
     // get array of tags
     parsedInput.tags = input.match(/#\S*/g);
+    {
+      // get duration or set manually if none is given
+      let duration = input.match(/~\S*/g);
+      if (!duration) duration = ['25'];
+      // parse to time string
+      duration = parseSubmitTime(duration[0]);
+      // convert to number
+      parsedInput.duration = Number(duration.replace(':', '.'));
+    }
+    // remove all special inputs and extra spaces to get task name
     parsedInput.taskName = input
       // remove tags
       .replace(/#\S*/g, '')
+      // remove duration
+      .replace(/~\S*/g, '')
       // remove extra spaces
       .replace(/ {2,}/g, ' ')
       // remove trailing white space
@@ -41,14 +54,9 @@ export default  class extends Component {
   }
 
   render() {
-    const boxStyle = {
-      border: '1px solid black',
-      padding: '15px'
-    };
-
     return (
       <div
-        style={boxStyle}
+        className="task-bar"
       >
         <form
           onSubmit={this.inputSubmitHandler}

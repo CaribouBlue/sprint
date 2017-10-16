@@ -4,6 +4,9 @@ import TaskBar from './TaskBar';
 import TaskManager from './TaskManager';
 import Task from './Task';
 import TaskQueue from './TaskQueue';
+import QTask from './QTask';
+import ClickToEdit from './ClickToEdit';
+import Timer from './Timer';
 
 export {
   App,
@@ -12,4 +15,7 @@ export {
   TaskManager,
   Task,
   TaskQueue,
+  QTask,
+  ClickToEdit,
+  Timer,
 }
