@@ -96,25 +96,31 @@ export default  class extends Component {
           className="status-form"
           onChange={this.selectStatus}
         >
-          <input
-            type="radio"
-            name="status"
-            value="all"
-            defaultChecked
-          />
-          <p>all</p>
-          <input
-            type="radio"
-            name="status"
-            value="open"
-          />
-          <p>open</p>
-          <input
-            type="radio"
-            name="status"
-            value="closed"
-          /> 
-          <p>closed</p>
+          <div>
+            <input
+              type="radio"
+              name="status"
+              value="all"
+              defaultChecked
+            />
+            <p>all</p>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="status"
+              value="open"
+            />
+            <p>open</p>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="status"
+              value="closed"
+            /> 
+            <p>closed</p>
+          </div>
         </form>
         {this.renderTasks()}
       </div>

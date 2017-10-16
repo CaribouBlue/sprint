@@ -58,7 +58,7 @@ const tasksReducer = (state = defaultState, action) => {
       newState.manager = [...state.manager];
       newState.queue = [...state.queue];
       const item1 = newState.queue[pl.index1];
-      newState.queue[pl.index1] = newState. queue[pl.index2];
+      newState.queue[pl.index1] = newState.queue[pl.index2];
       newState.queue[pl.index2] = item1;
       return newState;
     }

@@ -115,7 +115,6 @@ body {
       padding: 5px;
       padding-bottom: 0px;
       margin: 5px;
-      margin-bottom: 15px;
       margin-top: 0px;
       color: grey; }
     .task-manager .tabs-box .open {
@@ -123,9 +122,25 @@ body {
       border-bottom: 1px black solid; }
   .task-manager .status-form {
     display: flex;
-    justify-content: space-between;
     width: 45%;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    margin-top: 15px; }
+    .task-manager .status-form div {
+      display: flex; }
+      .task-manager .status-form div p {
+        margin-left: 5px;
+        margin-right: 10px; }
+  .task-manager ::-webkit-scrollbar {
+    width: 5px; }
+  .task-manager ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 10px;
+    border-radius: 10px; }
+  .task-manager ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: lightgrey;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); }
 
 .task-box, .break-box {
   display: flex;
@@ -141,12 +156,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin: 10px; }
+    margin: 10px;
+    max-width: 50%; }
     .task-box div .task-name, .break-box div .task-name {
       margin-bottom: 10px;
-      font-size: 20px; }
+      font-size: 20px;
+      max-width: 100%;
+      overflow-wrap: break-word; }
     .task-box div .task-tags, .break-box div .task-tags {
-      color: grey; }
+      color: grey;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap; }
   .task-box button, .break-box button {
     margin: 20px;
     height: 20px;

@@ -17,7 +17,10 @@ const QTask = props => (
   <div
     className={props.break ? 'break-box' : 'task-box'}
     style={{color: props.closed ? 'grey' : 'black'}}
-    onMouseDown={() => props.setDragging(props.position)}
+    onMouseDown={e => {
+      if (e.target.tagName === 'DIV')
+        props.setDragging(props.position);
+    }}
     onMouseEnter={() => props.break ? null : props.swap(props.position)}
   >
     {

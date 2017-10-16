@@ -25,7 +25,7 @@ class TaskQueue extends React.Component {
   }
 
   setDragging(item = 'none') {
-    console.log('dragging', item);
+    console.log('setting drg');
     this.setState({ dragging: item });
   }
 
@@ -60,8 +60,13 @@ class TaskQueue extends React.Component {
     return (
       <div
         className="task-queue"
-        onMouseUp={() => this.setDragging()}
-        onMouseLeave={() => this.setDragging()}
+        onMouseUp={e => {
+          if (e.target.tagName === 'DIV')
+            this.setDragging();
+        }}
+        onMouseLeave={() => {
+          this.setDragging();
+        }}
       >
         {this.renderTasks()}
       </div>
