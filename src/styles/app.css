@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Lobster|Roboto+Mono|Open+Sans|Heebo");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -65,11 +66,19 @@ body {
   background: #FFFFFF;
   box-sizing: border-box;
   height: 100vh;
-  padding-left: 10px;
-  padding-right: 10px; }
+  padding-top: 0px;
+  font-family: Open Sans; }
+  @media screen and (max-width: 767px) {
+    body {
+      height: 100%; } }
 
 #root {
   height: 100%; }
+
+.box {
+  height: 100%;
+  display: flex;
+  flex-flow: column; }
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -86,29 +95,58 @@ body {
   background: lightgrey;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); }
 
+.menu-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8vmin;
+  min-height: 70px;
+  background-color: #1976D2;
+  border-bottom: 1px solid #BDBDBD;
+  color: white; }
+  .menu-bar p {
+    font-size: 50px;
+    font-style: italic;
+    font-family: Lobster;
+    letter-spacing: 10px; }
+
 #app-box {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  height: 100%; }
+  flex-grow: 1;
+  padding: 2vmin; }
+  @media screen and (max-width: 767px) {
+    #app-box {
+      flex-direction: column; } }
   #app-box .section, #app-box .left, #app-box .right {
     box-sizing: border-box;
-    height: 100%;
+    display: flex;
+    flex-grow: 1;
     width: 50%;
-    border: 2px solid #BDBDBD;
-    border-top: 0px;
-    border-bottom: 0px;
+    border: 1px solid #BDBDBD;
+    /*    border-top: 0px;
+        border-bottom: 0px;*/
     background-color: white;
     overflow: hidden; }
+    @media screen and (max-width: 767px) {
+      #app-box .section, #app-box .left, #app-box .right {
+        width: 100%; } }
   #app-box .left {
     margin-right: 5px;
     display: flex;
     flex-flow: column; }
+    @media screen and (max-width: 767px) {
+      #app-box .left {
+        margin-right: 0px;
+        margin-bottom: 5px; } }
     #app-box .left .task-bar {
       height: 80px; }
       #app-box .left .task-bar form {
         height: 100%; }
         #app-box .left .task-bar form ::-webkit-input-placeholder {
-          color: whitesmoke; }
+          color: rgba(255, 255, 255, 0.75); }
         #app-box .left .task-bar form input {
           height: 100%;
           width: 100%;
@@ -174,13 +212,18 @@ body {
         overflow-y: auto;
         border-top: 1px solid #BDBDBD; }
   #app-box .right {
+    display: flex;
+    flex-flow: column;
     margin-left: 5px; }
+    @media screen and (max-width: 767px) {
+      #app-box .right {
+        margin-left: 0px;
+        margin-top: 5px; } }
     #app-box .right .timer {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      vertical-align: middle; }
+      align-items: center; }
       #app-box .right .timer .clock {
         text-align: center;
         box-sizing: border-box;
@@ -191,14 +234,30 @@ body {
         width: 100%;
         background-color: #03A9F4;
         color: white;
-        border-bottom: 1px solid #BDBDBD; }
-      #app-box .right .timer button {
-        border: 1px solid black;
-        padding: 2px;
-        margin: 10px;
-        background-color: white; }
-    #app-box .right .task-queue ::selection {
-      background-color: Transparent; }
+        border-bottom: 1px solid #BDBDBD;
+        font-family: Roboto Mono; }
+      #app-box .right .timer div {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+        #app-box .right .timer div .selected {
+          box-shadow: 0px 0px 5px 1px #BDBDBD inset; }
+        #app-box .right .timer div button {
+          box-sizing: border-box;
+          width: 100%;
+          height: 38px;
+          border-left: 1px solid rgba(0, 0, 0, 0.1);
+          background-color: white;
+          font-size: 20px; }
+    #app-box .right .task-queue {
+      display: flex;
+      flex-flow: column;
+      flex-grow: 1;
+      background-color: whitesmoke;
+      overflow-y: auto;
+      border-top: 1px solid #BDBDBD; }
+      #app-box .right .task-queue ::selection {
+        background-color: Transparent; }
 
 .task-box, .break-box {
   display: flex;
@@ -236,9 +295,10 @@ body {
     width: 20px; }
 
 .break-box {
+  box-sizing: border-box;
   background-color: whitesmoke;
-  min-height: 0px;
-  height: 47px; }
+  height: 47px;
+  min-height: 47px; }
   .break-box div .task-name {
     font-size: 18px;
     margin-bottom: 5px;

@@ -63,9 +63,7 @@ class TaskQueue extends React.Component {
           if (e.target.tagName === 'DIV')
             this.setDragging();
         }}
-        onMouseLeave={() => {
-          this.setDragging();
-        }}
+        onMouseLeave={() => this.setDragging()}
       >
         {this.renderTasks()}
       </div>

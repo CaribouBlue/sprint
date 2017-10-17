@@ -8,25 +8,31 @@ import {
 import { 
   App,
   NotFound,
+  MenuBar,
 } from '../components/_index';
 
 class AppRouter extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route
-            exact path="/"
-            render={() => <Redirect to="/app" />}
-          />
-          <Route
-            path="/app"
-            component={App}
-          />
-          <Route
-            component={NotFound}
-          />
-        </Switch>
+        <div
+          className="box"
+        >
+          <MenuBar />
+          <Switch>
+            <Route
+              exact path="/"
+              render={() => <Redirect to="/app" />}
+            />
+            <Route
+              path="/app"
+              component={App}
+            />
+            <Route
+              component={NotFound}
+            />
+          </Switch>
+        </div>
       </Router>
     );
   }

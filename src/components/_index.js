@@ -7,6 +7,7 @@ import TaskQueue from './TaskQueue';
 import QTask from './QTask';
 import ClickToEdit from './ClickToEdit';
 import Timer from './Timer';
+import MenuBar from './MenuBar';
 
 export {
   App,
@@ -18,4 +19,5 @@ export {
   QTask,
   ClickToEdit,
   Timer,
+  MenuBar,
 }
