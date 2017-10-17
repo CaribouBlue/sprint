@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Lobster|Roboto+Mono|Open+Sans|Heebo");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -62,94 +63,212 @@ button:focus {
   outline: none; }
 
 body {
-  background: #ECEEEE;
-  padding: 20px;
-  box-sizing: border-box; }
+  background: #FFFFFF;
+  box-sizing: border-box;
+  height: 100vh;
+  padding-top: 0px;
+  font-family: Open Sans; }
+  @media screen and (max-width: 767px) {
+    body {
+      height: 100%; } }
 
 #root {
   height: 100%; }
 
+.box {
+  height: 100%;
+  display: flex;
+  flex-flow: column; }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: lightgrey;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); }
+
+.menu-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8vmin;
+  min-height: 70px;
+  background-color: #1976D2;
+  border-bottom: 1px solid #BDBDBD;
+  color: white; }
+  .menu-bar p {
+    font-size: 50px;
+    font-style: italic;
+    font-family: Lobster;
+    letter-spacing: 10px; }
+
 #app-box {
-  height: 100%; }
-
-.task-bar {
-  border: 1px solid black;
-  padding: 15px; }
-  .task-bar button {
-    border: 1px solid black;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 5px; }
-
-.center-console {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  height: 100%; }
-  .center-console .right {
-    height: 100%;
-    width: 45%; }
-    .center-console .right .timer {
+  flex-grow: 1;
+  padding: 2vmin; }
+  @media screen and (max-width: 767px) {
+    #app-box {
+      flex-direction: column; } }
+  #app-box .section, #app-box .left, #app-box .right {
+    box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+    width: 50%;
+    border: 1px solid #BDBDBD;
+    /*    border-top: 0px;
+        border-bottom: 0px;*/
+    background-color: white;
+    overflow: hidden; }
+    @media screen and (max-width: 767px) {
+      #app-box .section, #app-box .left, #app-box .right {
+        width: 100%; } }
+  #app-box .left {
+    margin-right: 5px;
+    display: flex;
+    flex-flow: column; }
+    @media screen and (max-width: 767px) {
+      #app-box .left {
+        margin-right: 0px;
+        margin-bottom: 5px; } }
+    #app-box .left .task-bar {
+      height: 80px; }
+      #app-box .left .task-bar form {
+        height: 100%; }
+        #app-box .left .task-bar form ::-webkit-input-placeholder {
+          color: rgba(255, 255, 255, 0.75); }
+        #app-box .left .task-bar form input {
+          height: 100%;
+          width: 100%;
+          font-size: 22px;
+          padding: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          border: 0px;
+          border-bottom: 1px solid #BDBDBD;
+          box-sizing: border-box;
+          background-color: #03A9F4;
+          color: white; }
+        #app-box .left .task-bar form input:focus {
+          outline: none; }
+    #app-box .left .task-manager {
+      display: flex;
+      flex-flow: column;
+      flex-grow: 1; }
+      #app-box .left .task-manager .status-form {
+        display: flex;
+        justify-content: space-around;
+        box-sizing: border-box;
+        height: 39px;
+        width: 100%;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+        #app-box .left .task-manager .status-form .selected {
+          box-shadow: 0px 0px 5px 1px #BDBDBD inset; }
+        #app-box .left .task-manager .status-form div {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-left: 1px solid rgba(0, 0, 0, 0.1); }
+          #app-box .left .task-manager .status-form div p {
+            font-size: 20px;
+            margin-left: 5px;
+            margin-right: 10px; }
+      #app-box .left .task-manager .tabs-box {
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        height: 35px;
+        overflow-x: auto;
+        white-space: nowrap; }
+        #app-box .left .task-manager .tabs-box .tab {
+          padding: 5px;
+          padding-top: 0px;
+          padding-bottom: 0px;
+          margin: 5px;
+          margin-top: 0px;
+          color: grey;
+          font-size: 20px; }
+        #app-box .left .task-manager .tabs-box .open {
+          color: black;
+          border-bottom: 1px black solid; }
+      #app-box .left .task-manager .task-list {
+        display: flex;
+        flex-flow: column;
+        flex-grow: 1;
+        background-color: whitesmoke;
+        overflow-y: auto;
+        border-top: 1px solid #BDBDBD; }
+  #app-box .right {
+    display: flex;
+    flex-flow: column;
+    margin-left: 5px; }
+    @media screen and (max-width: 767px) {
+      #app-box .right {
+        margin-left: 0px;
+        margin-top: 5px; } }
+    #app-box .right .timer {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      margin: 10px; }
-      .center-console .right .timer .clock {
-        font-size: 20px; }
-      .center-console .right .timer button {
-        border: 1px solid black;
-        padding: 2px;
-        margin: 10px;
-        background-color: white; }
-    .center-console .right .task-queue ::selection {
-      background-color: Transparent; }
-
-.task-manager {
-  width: 45%;
-  padding: 15px; }
-  .task-manager .tabs-box {
-    overflow-x: auto;
-    white-space: nowrap; }
-    .task-manager .tabs-box .tab {
-      padding: 5px;
-      padding-bottom: 0px;
-      margin: 5px;
-      margin-top: 0px;
-      color: grey; }
-    .task-manager .tabs-box .open {
-      color: black;
-      border-bottom: 1px black solid; }
-  .task-manager .status-form {
-    display: flex;
-    width: 45%;
-    margin-bottom: 15px;
-    margin-top: 15px; }
-    .task-manager .status-form div {
-      display: flex; }
-      .task-manager .status-form div p {
-        margin-left: 5px;
-        margin-right: 10px; }
-  .task-manager ::-webkit-scrollbar {
-    width: 5px; }
-  .task-manager ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 10px;
-    border-radius: 10px; }
-  .task-manager ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: lightgrey;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); }
+      align-items: center; }
+      #app-box .right .timer .clock {
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 50px;
+        height: 80px;
+        width: 100%;
+        background-color: #03A9F4;
+        color: white;
+        border-bottom: 1px solid #BDBDBD;
+        font-family: Roboto Mono; }
+      #app-box .right .timer div {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+        #app-box .right .timer div .selected {
+          box-shadow: 0px 0px 5px 1px #BDBDBD inset; }
+        #app-box .right .timer div button {
+          box-sizing: border-box;
+          width: 100%;
+          height: 38px;
+          border-left: 1px solid rgba(0, 0, 0, 0.1);
+          background-color: white;
+          font-size: 20px; }
+    #app-box .right .task-queue {
+      display: flex;
+      flex-flow: column;
+      flex-grow: 1;
+      background-color: whitesmoke;
+      overflow-y: auto;
+      border-top: 1px solid #BDBDBD; }
+      #app-box .right .task-queue ::selection {
+        background-color: Transparent; }
 
 .task-box, .break-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  margin: 5px;
-  min-height: 75px;
-  background-color: white; }
+  border: 1px solid #BDBDBD;
+  border-right: 0px;
+  border-left: 0px;
+  min-height: 80px;
+  background-color: white;
+  margin-bottom: 2px; }
   .task-box div, .break-box div {
     display: flex;
     flex-direction: column;
@@ -162,9 +281,10 @@ body {
       margin-bottom: 10px;
       font-size: 20px;
       max-width: 100%;
-      overflow-wrap: break-word; }
+      overflow-wrap: break-word;
+      color: #212121; }
     .task-box div .task-tags, .break-box div .task-tags {
-      color: grey;
+      color: #757575;
       max-width: 100%;
       overflow-x: auto;
       overflow-y: hidden;
@@ -175,9 +295,10 @@ body {
     width: 20px; }
 
 .break-box {
+  box-sizing: border-box;
   background-color: whitesmoke;
-  min-height: 0px;
-  height: 47px; }
+  height: 47px;
+  min-height: 47px; }
   .break-box div .task-name {
     font-size: 18px;
     margin-bottom: 5px;

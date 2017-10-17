@@ -17,6 +17,7 @@ class Timer extends React.Component {
     this.state = {
       time: 0,
       completed: 0,
+      lastButton: 'none',
     };
 
     autoBind(this, 'startTimer', 'pauseTimer', 'stopTimer');
@@ -51,6 +52,7 @@ class Timer extends React.Component {
 
   startTimer() {
     if (this.props.tasks.length && !this.props.running) {
+      this.setState({ lastButton: 'start' });
       addBreaks();
       this.timerInterval = setInterval(() => {
         if(!this.props.tasks.length)
@@ -67,15 +69,18 @@ class Timer extends React.Component {
 
   pauseTimer() {
     if (this.props.running) {
+      this.setState({ lastButton: 'pause' });
       clearInterval(this.timerInterval);
       this.props.toggleTimer();
     }
   }
 
   stopTimer() {
-      clearInterval(this.timerInterval);
-      removeBreaks();
-      this.setState({ time: 0, completed: 0 });
+    this.setState({ lastButton: 'stop' });
+    setTimeout(() => this.setState({ lastButton: 'none' }), 500);
+    clearInterval(this.timerInterval);
+    removeBreaks();
+    this.setState({ time: 0, completed: 0 });
     if (this.props.running) {
       this.props.toggleTimer();
     }
@@ -90,21 +95,24 @@ class Timer extends React.Component {
           className="clock"
         >{numberToTime(this.state.time)}</h1>
         <div>
-        <button
-          onClick={this.startTimer}
-        >
-          Start
-        </button>
-        <button
-          onClick={this.pauseTimer}
-        >
-          Pause
-        </button>
-        <button
-          onClick={this.stopTimer}
-        >
-          Stop
-        </button>
+          <button
+            onClick={this.startTimer}
+            className={this.state.lastButton === 'start' ? 'selected' : null}
+          >
+            Start
+          </button>
+          <button
+            onClick={this.pauseTimer}
+            className={this.state.lastButton === 'pause' ? 'selected' : null}
+          >
+            Pause
+          </button>
+          <button
+            onClick={this.stopTimer}
+            className={this.state.lastButton === 'stop' ? 'selected' : null}
+          >
+            Stop
+          </button>
         </div>
       </div>
     );

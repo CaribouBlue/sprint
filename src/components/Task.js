@@ -11,17 +11,22 @@ import {
 const Task = props => (
   <div
     className="task-box"
-    style={{color: props.closed ? 'grey' : 'black'}}
+    style={{
+      color: props.closed ? 'grey' : 'black',
+      // backgroundColor: props.closed ? 'whitesmoke' : null,
+      borderColor: props.closed ? 'white' : null,
+    }}
   >
     <button
       onClick={() => changeStatus(props.position, props.closed ? 'open' : 'closed', 'manager')}
     >
-      {props.closed ? '✓' : 'O'}
+      {props.closed ? '✓' : '◯'}
     </button>
     <div>
       <ClickToEdit
         text={props.name}
         textClass="task-name"
+        textStyle={{color: props.closed ? 'grey' : 'black'}}
         handleSubmit={(value) => editTask(props.position, 'manager', 'taskName', value)}
         blockEdits={props.closed}
       />
