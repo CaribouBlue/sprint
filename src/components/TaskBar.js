@@ -62,15 +62,11 @@ export default  class extends Component {
           onSubmit={this.inputSubmitHandler}
         >
           <input 
+            placeholder="Add Task"
             type="text"
             value={this.state.taskInput}
             onChange={this.taskInputHandler}
           />
-          <button
-            type="submit"
-          >
-            Add Task
-          </button>
         </form>
       </div>
     );

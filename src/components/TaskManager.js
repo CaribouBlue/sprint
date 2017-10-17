@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import {
   Task,
+  // TaskBar,
 } from './_index';
 
 export default  class extends Component {
@@ -27,8 +28,7 @@ export default  class extends Component {
     this.setState({ tab });
   }
 
-  selectStatus(e) {
-    const status = e.target.value;
+  selectStatus(status) {
     this.setState({ status });
   }
 
@@ -84,6 +84,28 @@ export default  class extends Component {
         className="task-manager"
       >
         <div
+          className="status-form"
+        >
+          <div
+            onClick={() => this.selectStatus('all')}
+            className={this.state.status === 'all' ? 'selected' : null}
+          >
+            <p>all</p>
+          </div>
+          <div
+            onClick={() => this.selectStatus('open')}
+            className={this.state.status === 'open' ? 'selected' : null}
+          >
+            <p>open</p>
+          </div>
+          <div
+            onClick={() => this.selectStatus('closed')}
+            className={this.state.status === 'closed' ? 'selected' : null}
+          >
+            <p>closed</p>
+          </div>
+        </div>
+        <div
           className="tabs-box"
         >
           <button
@@ -92,37 +114,11 @@ export default  class extends Component {
           >all</button>
           {this.renderTabs()}
         </div>
-        <form
-          className="status-form"
-          onChange={this.selectStatus}
+        <div
+          className="task-list"
         >
-          <div>
-            <input
-              type="radio"
-              name="status"
-              value="all"
-              defaultChecked
-            />
-            <p>all</p>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="status"
-              value="open"
-            />
-            <p>open</p>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="status"
-              value="closed"
-            /> 
-            <p>closed</p>
-          </div>
-        </form>
-        {this.renderTasks()}
+          {this.renderTasks()}
+        </div>
       </div>
     );
   }

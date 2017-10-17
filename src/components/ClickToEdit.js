@@ -59,6 +59,7 @@ class ClickToEdit extends React.Component {
     return (
       <p
         className={this.props.textClass}
+        style={this.props.textStyle}
         onClick={this.handleClick}
       >{this.state.text}</p>
     );

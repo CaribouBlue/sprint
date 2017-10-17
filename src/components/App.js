@@ -27,30 +27,28 @@ class App extends React.Component {
       <div
         id="app-box"
       >
-        <TaskBar />
         <div
-          className="center-console"
+          className="left"
         >
+          <TaskBar />
           <TaskManager
             tasks={this.props.tasks.manager}
             running={this.state.timerRunning}
           />
-          <div
-            className="right"
-          >
-            <Timer 
-              tasks={this.props.tasks.queue}
-              running={this.state.timerRunning}
-              toggleTimer={this.toggleTimer}
-            />
-            <TaskQueue
-              tasks={this.props.tasks.queue}
-              running={this.state.timerRunning}
-            />
-          </div>
         </div>
-        {
-        }
+        <div
+          className="right"
+        >
+          <Timer 
+            tasks={this.props.tasks.queue}
+            running={this.state.timerRunning}
+            toggleTimer={this.toggleTimer}
+          />
+          <TaskQueue
+            tasks={this.props.tasks.queue}
+            running={this.state.timerRunning}
+          />
+        </div>
       </div>
     );
   }
