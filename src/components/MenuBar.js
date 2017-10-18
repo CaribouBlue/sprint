@@ -4,7 +4,11 @@ const MenuBar = props => (
   <div
     className="menu-bar"
   >
-    <p>Sprint</p>
+    <p>Task Sprint</p>
+    <img
+      src="/imgs/runner.svg"
+      alt=""
+    />
   </div>
 );
 
