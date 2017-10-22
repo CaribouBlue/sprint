@@ -28,12 +28,17 @@ export default  class extends Component {
 
   parseInput() {
     const parsedInput = {};
-    var input = this.state.taskInput
-    // get array of tags
-    parsedInput.tags = input.match(/#\S*/g);
+    const input = this.state.taskInput
     {
+      // get array of tags
+      let tags = input.match(/#\S*/g);
+      // default to empty array
+      if (!tags) tags = [];
+      parsedInput.tags = tags;
+
       // get duration or set manually if none is given
       let duration = input.match(/~\S*/g);
+      // default to 25min
       if (!duration) duration = ['25'];
       // parse to time string
       duration = parseSubmitTime(duration[0]);
