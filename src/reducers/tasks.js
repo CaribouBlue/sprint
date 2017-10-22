@@ -11,7 +11,7 @@ const defaultState = {
   queue: [],
 };
 
-const tasksReducer = (state = defaultState, action) => {
+const tasksReducer = (state = { manager: [], queue: [] }, action) => {
   switch (action.type) {
     case 'NEW_TASK': {
       return {...state, manager: [...state.manager, action.payload]};

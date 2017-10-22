@@ -8,6 +8,7 @@ import QTask from './QTask';
 import ClickToEdit from './ClickToEdit';
 import Timer from './Timer';
 import MenuBar from './MenuBar';
+import HelpPage from './HelpPage';
 
 export {
   App,
@@ -20,4 +21,5 @@ export {
   ClickToEdit,
   Timer,
   MenuBar,
+  HelpPage,
 }

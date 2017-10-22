@@ -9,6 +9,7 @@ import {
   App,
   NotFound,
   MenuBar,
+  HelpPage,
 } from '../components/_index';
 
 class AppRouter extends Component {
@@ -27,6 +28,10 @@ class AppRouter extends Component {
             <Route
               path="/app"
               component={App}
+            />
+            <Route
+              path="/help"
+              component={HelpPage}
             />
             <Route
               component={NotFound}
